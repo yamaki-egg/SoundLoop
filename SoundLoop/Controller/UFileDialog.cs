@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SoundLoop.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Versioning;
@@ -9,7 +10,7 @@ namespace SoundLoop.Controller
 {
     internal class UFileDialog
     {
-        public static string FileOpen(string fileter= "音声ファイル(*.wav,*mp3,|*.wav;*.mp3|" + "すべてのファイル(*.*)|*.*")
+        public static (string,NAudioFunc) FileOpen(string fileter= "音声ファイル(*.wav,*.mp3,*.mp4|*.wav;*.mp3;*.mp4|" + "すべてのファイル(*.*)|*.*")
         {
             string fname = null;
             using(var openDialog=new OpenFileDialog())
@@ -20,11 +21,14 @@ namespace SoundLoop.Controller
                 if(openDialog.ShowDialog() == DialogResult.OK)
                     fname = openDialog.FileName;
             }
-            return fname;
+            return (fname,ExtCheck(fname));
         }
-        public static bool IsExtCheck(string fname)
+        public static NAudioFunc ExtCheck(string fname)
         {
-            return Path.GetExtension(fname) == ".mp4";
+            if (Path.GetExtension(fname) == FormatsData.MP4)
+                return new NAudioMedia();
+            else
+                return new NAudioMedia();
         }
     }
 }

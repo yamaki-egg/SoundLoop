@@ -11,30 +11,13 @@ using SoundLoop.Models;
 
 namespace SoundLoop.Controller
 {
-    internal class NAudioFunc
+    abstract internal class NAudioFunc:IReadable
     {
-        SoundModel _SoundModel = SoundModel.Instance;
-        public void ReadSoundF(string fname)
-        {
-            _SoundModel.SoundEvent = new();
-            _SoundModel.AFR = new(fname);
-            _SoundModel.SoundEvent.Init(_SoundModel.AFR);
-            _SoundModel.SoundLength = _SoundModel.AFR.Length;
-#if DEBUG
-            Debug.WriteLine(_SoundModel.SoundLength);
-#endif
-        }
-        public void ReadMediaF(string fname)
-        {
-            _SoundModel.SoundEvent=new();
-            _SoundModel.MFR = new(fname);
-            _SoundModel.SoundEvent.Init(_SoundModel.MFR);
-            _SoundModel.SoundLength= _SoundModel.MFR.Length;
-        }
+        protected SoundModel _SoundModel = SoundModel.Instance;
+
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public async void Play()
+        public virtual async void Play()
         {
-            _SoundModel.AFR.Position = 0;
             _SoundModel.SoundEvent.Play();
             await Task.Run(Loop);
         }
@@ -49,17 +32,9 @@ namespace SoundLoop.Controller
             _SoundModel.SoundEvent.Volume = volume;
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        void Loop()
-        {
-            while (true)
-            {
-                if (_SoundModel.AFR.Position >= _SoundModel.SoundLength)
-                    break;
-#if DEBUG
-                Debug.WriteLine(_SoundModel.AFR.Position);
-#endif
-            }
-		    Play();
-        }
-    }
+        protected abstract void Loop();
+
+		public virtual void Read(string fname) { }
+
+	}
 }

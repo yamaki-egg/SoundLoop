@@ -16,7 +16,7 @@ namespace SoundLoop
 			stopToolStripMenuItem.Click += Form1Events.Form1Pause_Click;
 			volumeTrackBar.ValueChanged += Form1Events.Form1Volume_Change;
 			mp4Tomp3ToolStripMenuItem.Click += Form1Events.MP4ToMP3Convert_Click;
-			this.KeyDown += Form1Events.Form1Close_Key;
+			//this.KeyDown += Form1Events.Form1Close_Key;
 		}
 
 
