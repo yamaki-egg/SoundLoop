@@ -24,6 +24,13 @@ namespace SoundLoop.Controller
             Debug.WriteLine(_SoundModel.SoundLength);
 #endif
         }
+        public void ReadMediaF(string fname)
+        {
+            _SoundModel.SoundEvent=new();
+            _SoundModel.MFR = new(fname);
+            _SoundModel.SoundEvent.Init(_SoundModel.MFR);
+            _SoundModel.SoundLength= _SoundModel.MFR.Length;
+        }
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public async void Play()
         {

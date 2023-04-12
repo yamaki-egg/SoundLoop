@@ -30,7 +30,15 @@ namespace SoundLoop.Controller
         {
             if (_SoundModel.Fname.Length == 0)
                 return;
-            _NAudioFunc.ReadSoundF(_SoundModel.Fname);
+            if (UFileDialog.IsExtCheck(_SoundModel.Fname))
+            {
+                _NAudioFunc.ReadMediaF(_SoundModel.Fname);
+            }
+            else
+            {
+                _NAudioFunc.ReadSoundF(_SoundModel.Fname);
+            }
+               
             Status.Text=Path.GetFileName(_SoundModel.Fname);
 			_NAudioFunc.Play();
         }
@@ -56,7 +64,7 @@ namespace SoundLoop.Controller
         {
             if(_SoundModel.Fname.Length==0)
                 return;
-            Converter.MP4ToMP3(_SoundModel.Fname);
+            NRecoFunc.MP4ToMP3(_SoundModel.Fname);
         }
     }
 }
