@@ -64,7 +64,7 @@ namespace SoundLoop.Controller
         {
             if(_SoundModel.Fname.Length==0)
                 return;
-            NRecoFunc.MP4ToMP3(_SoundModel.Fname);
+            //NRecoFunc.MP4ToMP3(_SoundModel.Fname);
         }
     }
 }
