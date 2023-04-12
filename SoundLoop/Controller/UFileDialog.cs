@@ -22,5 +22,9 @@ namespace SoundLoop.Controller
             }
             return fname;
         }
+        public static bool IsExtCheck(string fname)
+        {
+            return Path.GetExtension(fname) == ".mp4";
+        }
     }
 }

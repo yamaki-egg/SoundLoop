@@ -1,0 +1,16 @@
+﻿
+using NAudio.Wave;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+namespace SoundLoop.Controller
+{
+	//mp4からmp3など、変換をするクラス
+	internal class NRecoFunc
+	{
+
+	}
+
+}
