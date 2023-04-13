@@ -1,11 +1,12 @@
 ﻿using SoundLoop.Models;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Runtime.Versioning;
 using System.Text;
 using System.Threading.Tasks;
-
+using SoundLoop.Controller.Extensions;
 namespace SoundLoop.Controller
 {
     internal class UFileDialog
@@ -23,12 +24,13 @@ namespace SoundLoop.Controller
             }
             return (fname,ExtCheck(fname));
         }
+        [Pure]
         public static NAudioFunc ExtCheck(string fname)
         {
-            if (Path.GetExtension(fname) == FormatsData.MP4)
+            if (fname.GetExtensionWithoutPeriod() == FormatsData.MP4)
                 return new NAudioMedia();
             else
-                return new NAudioMedia();
+                return new NAudioSound();
         }
     }
 }
