@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="SoundLoop.Properties.Resources" Collapsed="true">
+    <Position X="9.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SoundLoop.Controller.Form1Events" Collapsed="true">
+    <Position X="11.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAEEAAAAAABAAAAAAgAAAAIQAAAAAEAAACFAAAA=</HashCode>
+      <FileName>Controller\Form1Events.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SoundLoop.Controller.NAudioFunc" Collapsed="true">
+    <Position X="6" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAQIAAAAAAAAAAAAAAAgAAAAAAAAgEAAAAAAAAA=</HashCode>
+      <FileName>Controller\NAudioFunc.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SoundLoop.Controller.NAudioMedia" Collapsed="true">
+    <Position X="4.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAAAAAAAAAAAgAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>Controller\NAudioMedia.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SoundLoop.Controller.NAudioSound" Collapsed="true">
+    <Position X="7" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAAAAAAAAAAAgAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>Controller\NAudioSound.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SoundLoop.Controller.UFileDialog" Collapsed="true">
+    <Position X="13" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controller\UFileDialog.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SoundLoop.Models.SoundModel" Collapsed="true">
+    <Position X="11.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEEAAAAAAAgAAAAACIAAAAAAAAAAIAQAAAAAAAEgA=</HashCode>
+      <FileName>Models\SoundModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SoundLoop.Form1" Collapsed="true">
+    <Position X="9.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAQCCAAAAEAAAiAAAASAAAAAAgACgCAAAAAAAE=</HashCode>
+      <FileName>View\Form1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SoundLoop.Program" Collapsed="true">
+    <Position X="13" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="SoundLoop.Models.FormatsData" Collapsed="true">
+    <Position X="9.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\FormatsData.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Interface Name="SoundLoop.Controller.IReadable" Collapsed="true">
+    <Position X="9.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controller\IReadable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Yu Gothic UI" Size="9" />
+</ClassDiagram>
