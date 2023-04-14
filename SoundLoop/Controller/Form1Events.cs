@@ -10,7 +10,7 @@ namespace SoundLoop.Controller
     internal class Form1Events
     {
         NAudioFunc _NAudioFunc;
-        NRecoConvert _NRecoConvert = new();
+        NRecoNAdioConvert _NRecoConvert = new();
         SoundModel _SoundModel = SoundModel.Instance;
         public ToolStripStatusLabel Status {  get; init; }
         public TrackBar VolumeBar { get; init; }
@@ -53,6 +53,12 @@ namespace SoundLoop.Controller
             if(_SoundModel.Fname.Length==0)
                 return;
             _NRecoConvert.MP4ToMP3(_SoundModel.Fname);
+        }
+        public void MP3ToWavConvert_Click(Object sender, EventArgs e)
+        {
+            if (_SoundModel.Fname.Length == 0)
+                return;
+            _NRecoConvert.MP3ToWav(_SoundModel.Fname);
         }
     }
 }
