@@ -47,6 +47,10 @@ namespace SoundLoop.Controller
 				_Message(ex.Message);
             }
         }
+		public void WavToMP3(string WavFile)
+		{
+
+		}
     }
 
 }
