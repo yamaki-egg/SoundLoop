@@ -15,12 +15,7 @@ namespace SoundLoop.Controller
     {
         protected SoundModel _SoundModel = SoundModel.Instance;
 
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public virtual async void Play()
-        {
-            _SoundModel.SoundEvent.Play();
-            await Task.Run(Loop);
-        }
+
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void Pause()
         {
@@ -31,7 +26,14 @@ namespace SoundLoop.Controller
         {
             _SoundModel.SoundEvent.Volume = volume;
         }
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+		//LoopとPlayは再帰
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public virtual async void Play()
+		{
+			_SoundModel.SoundEvent.Play();
+			await Task.Run(Loop);
+		}
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected void Loop()
         {
 			while (true)

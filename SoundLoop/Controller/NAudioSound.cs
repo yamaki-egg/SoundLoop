@@ -15,10 +15,6 @@ namespace SoundLoop.Controller
 			_SoundModel.SoundEvent = new();
 			_SoundModel.AFR = new(fname);
 			_SoundModel.SoundEvent.Init(_SoundModel.AFR);
-			_SoundModel.SoundLength = _SoundModel.AFR.Length;
-#if DEBUG
-			Debug.WriteLine(_SoundModel.SoundLength);
-#endif
 		}
 		public override void Play()
 		{
