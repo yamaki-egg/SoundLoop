@@ -25,7 +25,7 @@ namespace SoundLoop.Controller
             return (fname,ExtCheck(fname));
         }
         [Pure]
-        public static NAudioFunc ExtCheck(string fname)
+        static NAudioFunc ExtCheck(string fname)
         {
             if (fname?.GetExtensionWithoutPeriod() == FormatsData.MP4)
                 return new NAudioMedia();

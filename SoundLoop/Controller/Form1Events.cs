@@ -54,7 +54,7 @@ namespace SoundLoop.Controller
                 return;
             _NRecoConvert.MP4ToMP3(_SoundModel.Fname);
         }
-        public void MP3ToWavConvert_Click(Object sender, EventArgs e)
+        public void MP3ToWavConvert_Click(object sender, EventArgs e)
         {
             if (_SoundModel.Fname.Length == 0)
                 return;

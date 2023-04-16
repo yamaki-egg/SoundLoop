@@ -14,8 +14,9 @@ namespace SoundLoop.Models
         public AudioFileReader AFR { get; set; }
         public MediaFoundationReader MFR { get; set; }
         public string Fname { get; set; }
-        public double SoundLength { get; set; }
-        SoundModel() { }
+        public long SoundLength { get; set; }
+        
+		SoundModel() { }
         public static SoundModel Instance
         {
             get

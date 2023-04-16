@@ -18,18 +18,6 @@ namespace SoundLoop.Controller
 			_SoundModel.SoundLength = _SoundModel.MFR.Length;
 		}
 
-		protected override void Loop()
-		{
-			while (true)
-			{
-				if (_SoundModel.MFR.Position >= _SoundModel.SoundLength)
-					break;
-#if DEBUG
-				Debug.WriteLine(_SoundModel.MFR.Position);
-#endif
-			}
-			Play();
-		}
 		public override void Play()
 		{
 			_SoundModel.MFR.Position = 0;

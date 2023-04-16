@@ -32,7 +32,16 @@ namespace SoundLoop.Controller
             _SoundModel.SoundEvent.Volume = volume;
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected abstract void Loop();
+        protected void Loop()
+        {
+			while (true)
+			{
+				if (_SoundModel.SoundEvent.PlaybackState == PlaybackState.Stopped)
+					break;
+			}
+
+			Play();
+		}
 
 		public virtual void Read(string fname) { }
 
