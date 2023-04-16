@@ -40,11 +40,20 @@ namespace SoundLoop.Controller
 			{
 				if (_SoundModel.SoundEvent.PlaybackState == PlaybackState.Stopped)
 					break;
+				if (_SoundModel.SoundEvent.PlaybackState == PlaybackState.Paused)
+					return;
+					
 			}
 
 			Play();
 		}
-
+		protected void Reset(WaveStream waveStream)
+		{
+			if (_SoundModel.SoundEvent.PlaybackState == PlaybackState.Stopped)
+			{
+				waveStream.Position = 0;
+			}
+		}
 		public virtual void Read(string fname) { }
 
 	}

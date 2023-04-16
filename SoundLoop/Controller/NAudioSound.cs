@@ -18,7 +18,8 @@ namespace SoundLoop.Controller
 		}
 		public override void Play()
 		{
-			_SoundModel.AFR.Position = 0;
+			
+			Reset(_SoundModel.AFR);
 			base.Play();
 		}
 	}

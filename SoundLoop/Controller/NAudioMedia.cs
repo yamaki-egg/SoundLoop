@@ -5,7 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using NAudio.Wave;
 namespace SoundLoop.Controller
 {
 	internal class NAudioMedia:NAudioFunc
@@ -19,7 +19,7 @@ namespace SoundLoop.Controller
 
 		public override void Play()
 		{
-			_SoundModel.MFR.Position = 0;
+			Reset(_SoundModel.MFR);
 			base.Play();
 		}
 	}
