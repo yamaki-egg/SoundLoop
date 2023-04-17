@@ -12,14 +12,17 @@ namespace SoundLoop.Controller
 	{
 		public override void Read(string fname)
 		{
-			_SoundModel.SoundEvent = new();
-			_SoundModel.MFR = new(fname);
-			_SoundModel.SoundEvent.Init(_SoundModel.MFR);
+			if (StateNull || Stopped )
+			{
+				//_SoundModel.SoundEvent = new();
+				SoundModel.MFR = new(fname);
+				_SoundModel.SoundEvent.Init(SoundModel.MFR);
+			}
 		}
 
 		public override void Play()
 		{
-			Reset(_SoundModel.MFR);
+			Reset(SoundModel.MFR);
 			base.Play();
 		}
 	}
