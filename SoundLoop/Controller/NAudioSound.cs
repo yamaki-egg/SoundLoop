@@ -14,11 +14,6 @@ namespace SoundLoop.Controller
 		{
 			if (NullState || Stooped)
 			{
-				//using (_SoundModel.AFR = new(fname))
-				//{
-				//	_SoundModel.WaveOutEvent.Init(_SoundModel.AFR);
-				//	Play();
-				//}
 				_SoundModel.AFR = new(fname);
 				_SoundModel.WaveOutEvent.Init(_SoundModel.AFR);
 				Play();
