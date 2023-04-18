@@ -24,7 +24,7 @@ namespace SoundLoop.Controller
 		}
 		public override void Play()
 		{
-			Reset(SoundModel.MFR);
+			Reset(_SoundModel.MFR);
 			base.Play();
 		}
 	}
