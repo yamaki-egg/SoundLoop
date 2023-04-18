@@ -24,13 +24,12 @@ namespace SoundLoop.Controller
         public void FormOpen_Click(object sender, EventArgs e)
         {
             (_SoundModel.Fname,_NAudioFunc) =UFileDialog.FileOpen();
+            _NAudioFunc.Read(_SoundModel.Fname);
         }
         public void Form1Play_Click(object sender, EventArgs e)
         {
-            if (_SoundModel.Fname.Length == 0)
-                return;
-            _NAudioFunc.Read(_SoundModel.Fname);
-            _NAudioFunc.Play();
+
+            _SoundModel.WaveOutEvent.Play();
            
             Status.Text=Path.GetFileName(_SoundModel.Fname);
         }
@@ -40,7 +39,7 @@ namespace SoundLoop.Controller
         }
         public void Form1Volume_Change(object sender, EventArgs e)
         {
-            if (_SoundModel.SoundEvent is null)
+            if (_SoundModel.WaveOutEvent is null)
                 return;
             var adjustVolumeNum = 100f;
 			_NAudioFunc.AdjustVolume(VolumeBar.Value / adjustVolumeNum);

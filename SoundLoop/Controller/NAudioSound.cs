@@ -14,9 +14,14 @@ namespace SoundLoop.Controller
 		{
 			if (NullState || Stooped)
 			{
-                //_SoundModel.SoundEvent = new();
-                _SoundModel.AFR = new(fname);
-                _SoundModel.SoundEvent.Init(_SoundModel.AFR);
+				//using (_SoundModel.AFR = new(fname))
+				//{
+				//	_SoundModel.WaveOutEvent.Init(_SoundModel.AFR);
+				//	Play();
+				//}
+				_SoundModel.AFR = new(fname);
+				_SoundModel.WaveOutEvent.Init(_SoundModel.AFR);
+				Play();
             }
 		}
 		public override void Play()
