@@ -10,7 +10,7 @@ namespace SoundLoop.Models
     internal class SoundModel
     {
         static readonly object _lockObject = new();
-        public WaveOutEvent SoundEvent { get; set; }
+        public WaveOutEvent SoundEvent { get; } = new();
         public AudioFileReader AFR { get; set; }
         public MediaFoundationReader MFR { get; set; }
         public string Fname { get; set; }
@@ -21,8 +21,7 @@ namespace SoundLoop.Models
             {
                 lock (_lockObject)
                 {
-                    if (_instance == null)
-                        _instance = new();
+                    _instance ??= new();
                 }
                 return _instance;
             }

@@ -14,7 +14,9 @@ namespace SoundLoop.Controller
     abstract internal class NAudioFunc:IReadable
     {
         protected SoundModel _SoundModel = SoundModel.Instance;
-
+		protected bool Stooped=>_SoundModel.SoundEvent.PlaybackState== PlaybackState.Stopped;
+		protected bool Paused=>_SoundModel.SoundEvent.PlaybackState==PlaybackState.Paused;
+		protected bool NullState => _SoundModel.SoundEvent?.PlaybackState == null;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void Pause()
@@ -42,9 +44,8 @@ namespace SoundLoop.Controller
 					break;
 				if (_SoundModel.SoundEvent.PlaybackState == PlaybackState.Paused)
 					return;
-					
+				Debug.WriteLine(_SoundModel.AFR.CurrentTime);
 			}
-
 			Play();
 		}
 		protected void Reset(WaveStream waveStream)
