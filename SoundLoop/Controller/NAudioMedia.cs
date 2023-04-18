@@ -1,4 +1,4 @@
-﻿using SoundLoop.Models;
+using SoundLoop.Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -12,6 +12,7 @@ namespace SoundLoop.Controller
 	{
 		public override void Read(string fname)
 		{
+
 			if (NullState || Stooped)
 			{              
 				using(_SoundModel.MFR = new(fname))
@@ -23,7 +24,7 @@ namespace SoundLoop.Controller
 		}
 		public override void Play()
 		{
-			Reset(_SoundModel.MFR);
+			Reset(SoundModel.MFR);
 			base.Play();
 		}
 	}

@@ -1,4 +1,4 @@
-﻿using NAudio.Wave;
+using NAudio.Wave;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,8 +41,12 @@ namespace SoundLoop.Models
             }
         }
         public MediaFoundationReader MFR { get; set; }
+
         public string Fname { get; set; }
-		SoundModel() { }
+		SoundModel()
+        {
+            
+        }
         public static SoundModel Instance
         {
             get

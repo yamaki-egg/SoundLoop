@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -14,6 +14,7 @@ namespace SoundLoop.Controller
     abstract internal class NAudioFunc:IReadable
     {
         protected SoundModel _SoundModel = SoundModel.Instance;
+
 		protected bool Stooped=>_SoundModel.WaveOutEvent.PlaybackState== PlaybackState.Stopped;
 		protected bool Paused=>_SoundModel.WaveOutEvent.PlaybackState==PlaybackState.Paused;
 		protected bool NullState => _SoundModel.WaveOutEvent?.PlaybackState == null;
@@ -33,6 +34,7 @@ namespace SoundLoop.Controller
 		public virtual async void Play()
 		{
 			_SoundModel.WaveOutEvent.Play();
+
 			await Task.Run(Loop);
 		}
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
