@@ -11,7 +11,7 @@ using SoundLoop.Models;
 
 namespace SoundLoop.Controller.NAudio
 {
-    abstract internal class NAudioFunc : IUserPlaybackable,ISoundModelProvider
+    abstract internal class NAudioBase : IUserPlaybackable,ISoundModelProvider
     {
         public SoundModel SoundModel => SoundModel.Instance;
 
@@ -62,8 +62,17 @@ namespace SoundLoop.Controller.NAudio
         {
             if (Paused)
             {
-                SoundModel.WaveOutEvent.Play();
+                Play();
             }
         }
-    }
+
+		public void Stop(WaveStream waveStream)
+		{
+			if(waveStream == null)
+                return;
+            Pause();
+            SoundModel.WaveOutEvent.Stop();
+			waveStream.Dispose();
+		}
+	}
 }

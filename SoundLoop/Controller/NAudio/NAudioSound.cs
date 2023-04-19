@@ -9,20 +9,20 @@ using NAudio.Wave;
 
 namespace SoundLoop.Controller.NAudio
 {
-    internal class NAudioSound : NAudioFunc
+    internal class NAudioSound : NAudioBase
     {
         public override void Read(string fname)
         {
             if (NullState || Stooped)
             {
-                SoundModel.AFR = new(fname);
-                SoundModel.WaveOutEvent.Init(SoundModel.AFR);
+                SoundModel.WaveStream = new AudioFileReader(fname);
+                SoundModel.WaveOutEvent.Init(SoundModel.WaveStream);
                 Play();
             }
         }
         public override void Play()
         {
-            Reset(SoundModel.AFR);
+            Reset(SoundModel.WaveStream);
             base.Play();
         }
     }

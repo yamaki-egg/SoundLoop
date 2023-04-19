@@ -43,6 +43,10 @@ namespace SoundLoop.Controller
             var adjustVolumeNum = 100f;
 			_NAudio.AdjustVolume(VolumeBar.Value / adjustVolumeNum);
 		}
+        public void Form1Stop_Click(object sender, EventArgs e)
+        {
+            _NAudio.Stop(SoundModel.WaveStream);
+        }
         public void Form1Close_Key(object sender, FormClosingEventArgs e)
         {
         }

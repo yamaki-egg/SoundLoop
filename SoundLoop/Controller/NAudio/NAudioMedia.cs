@@ -9,22 +9,22 @@ using NAudio.Wave;
 
 namespace SoundLoop.Controller.NAudio
 {
-    internal class NAudioMedia : NAudioFunc
+    internal class NAudioMedia : NAudioBase
     {
         public override void Read(string fname)
         {
             if (NullState || Stooped)
             {
-                using (SoundModel.MFR = new(fname))
+                using (SoundModel.WaveStream = new MediaFoundationReader(fname))
                 {
-                    SoundModel.WaveOutEvent.Init(SoundModel.MFR);
+                    SoundModel.WaveOutEvent.Init(SoundModel.WaveStream);
                     Play();
                 }
             }
         }
         public override void Play()
         {
-            Reset(SoundModel.MFR);
+            Reset(SoundModel.WaveStream);
             base.Play();
         }
     }
