@@ -11,7 +11,7 @@ namespace SoundLoop.Models
     {
         static readonly object _lockObject = new();
         WaveOutEvent _waveOutEvent = new();
-        AudioFileReader _audioFileReader;
+        WaveStream _waveStream;
         public WaveOutEvent WaveOutEvent
         {
             get => _waveOutEvent;
@@ -24,23 +24,22 @@ namespace SoundLoop.Models
 
 			}
 		}
-        public AudioFileReader AFR
+        public WaveStream WaveStream
         {
-            get => _audioFileReader;
+            get => _waveStream;
             set
             {
-                if(_audioFileReader == null)
+                if(_waveStream == null)
                 {
-                    _audioFileReader = value;
+                    _waveStream = value;
                 }
                 else
                 {
-                    _audioFileReader.Dispose();
-                    _audioFileReader = value;
+                    _waveStream.Dispose();
+                    _waveStream = value;
                 }
             }
         }
-        public MediaFoundationReader MFR { get; set; }
 
         public string Fname { get; set; }
 		SoundModel()
