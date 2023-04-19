@@ -1,4 +1,5 @@
-﻿using SoundLoop.Models;
+﻿using SoundLoop.Controller.NAudio;
+using SoundLoop.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace SoundLoop.Controller
 {
-    internal class Form1Events
+    internal class Form1Events:ISoundModelProvider
     {
-        NAudioFunc _NAudioFunc;
+        IUserPlaybackable _NAudio;
         NRecoNAdioConvert _NRecoConvert = new();
-        SoundModel _SoundModel = SoundModel.Instance;
+        public SoundModel SoundModel => SoundModel.Instance;
         public ToolStripStatusLabel Status {  get; init; }
         public TrackBar VolumeBar { get; init; }
         public Form Form {  get; init; }
@@ -23,41 +24,39 @@ namespace SoundLoop.Controller
         }
         public void FormOpen_Click(object sender, EventArgs e)
         {
-            (_SoundModel.Fname,_NAudioFunc) =UFileDialog.FileOpen();
-            _NAudioFunc.Read(_SoundModel.Fname);
+            (SoundModel.Fname,_NAudio) =UFileDialog.FileOpen();
+            _NAudio.Read(SoundModel.Fname);
+            Status.Text = Path.GetFileName(SoundModel.Fname);
         }
         public void Form1Play_Click(object sender, EventArgs e)
         {
-
-            _SoundModel.WaveOutEvent.Play();
-           
-            Status.Text=Path.GetFileName(_SoundModel.Fname);
+            SoundModel.WaveOutEvent.Play();   
         }
         public void Form1Pause_Click(object sender, EventArgs e)
         {
-            _NAudioFunc.Pause();
+            _NAudio.Pause();
         }
         public void Form1Volume_Change(object sender, EventArgs e)
         {
-            if (_SoundModel.WaveOutEvent is null)
+            if (SoundModel.WaveOutEvent is null)
                 return;
             var adjustVolumeNum = 100f;
-			_NAudioFunc.AdjustVolume(VolumeBar.Value / adjustVolumeNum);
+			_NAudio.AdjustVolume(VolumeBar.Value / adjustVolumeNum);
 		}
         public void Form1Close_Key(object sender, FormClosingEventArgs e)
         {
         }
         public void MP4ToMP3Convert_Click(object sender, EventArgs e)
         {
-            if(_SoundModel.Fname.Length==0)
+            if(SoundModel.Fname.Length==0)
                 return;
-            _NRecoConvert.MP4ToMP3(_SoundModel.Fname);
+            _NRecoConvert.MP4ToMP3(SoundModel.Fname);
         }
         public void MP3ToWavConvert_Click(object sender, EventArgs e)
         {
-            if (_SoundModel.Fname.Length == 0)
+            if (SoundModel.Fname.Length == 0)
                 return;
-            _NRecoConvert.MP3ToWav(_SoundModel.Fname);
+            _NRecoConvert.MP3ToWav(SoundModel.Fname);
         }
     }
 }

@@ -7,11 +7,13 @@ using System.Runtime.Versioning;
 using System.Text;
 using System.Threading.Tasks;
 using SoundLoop.Controller.Extensions;
+using SoundLoop.Controller.NAudio;
+
 namespace SoundLoop.Controller
 {
     internal class UFileDialog
     {
-        public static (string,NAudioFunc) FileOpen(string fileter= "音声ファイル(*.wav,*.mp3,*.mp4|*.wav;*.mp3;*.mp4|" + "すべてのファイル(*.*)|*.*")
+        public static (string,IUserPlaybackable) FileOpen(string fileter= "音声ファイル(*.wav,*.mp3,*.mp4|*.wav;*.mp3;*.mp4|" + "すべてのファイル(*.*)|*.*")
         {
             string fname = null;
             using(var openDialog=new OpenFileDialog())
@@ -25,7 +27,7 @@ namespace SoundLoop.Controller
             return (fname,ExtCheck(fname));
         }
         [Pure]
-        static NAudioFunc ExtCheck(string fname)
+        static IUserPlaybackable ExtCheck(string fname)
         {
             if (fname?.GetExtensionWithoutPeriod() == FormatsData.MP4)
                 return new NAudioMedia();
