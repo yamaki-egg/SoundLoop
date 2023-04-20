@@ -1,0 +1,18 @@
+@startuml
+class Form1 <<partial>> {
+    # <<override>> Dispose(disposing:bool) : void
+    - InitializeComponent() : void
+}
+Form1 --> "menuStrip1" MenuStrip
+Form1 --> "ファイルToolStripMenuItem" ToolStripMenuItem
+Form1 --> "openToolStripMenuItem" ToolStripMenuItem
+Form1 --> "playToolStripMenuItem" ToolStripMenuItem
+Form1 --> "stopToolStripMenuItem" ToolStripMenuItem
+Form1 --> "volumeTrackBar" TrackBar
+Form1 --> "statusStrip1" StatusStrip
+Form1 --> "fnameStripStatusLabel" ToolStripStatusLabel
+Form1 --> "変換ToolStripMenuItem" ToolStripMenuItem
+Form1 --> "mp4Tomp3ToolStripMenuItem" ToolStripMenuItem
+Form1 --> "mp3ToWavToolStripMenuItem" ToolStripMenuItem
+Form1 --> "pauseToolStripMenuItem1" ToolStripMenuItem
+@enduml

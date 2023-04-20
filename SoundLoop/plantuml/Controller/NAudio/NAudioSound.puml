@@ -1,0 +1,7 @@
+@startuml
+class NAudioSound {
+    + <<override>> Read(fname:string) : void
+    + <<override>> Play() : void
+}
+NAudioBase <|-- NAudioSound
+@enduml

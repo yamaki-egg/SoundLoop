@@ -1,0 +1,6 @@
+@startuml
+class NAudioMP3ToWAV {
+    + <<override>> Convert(MP3File:string) : void
+}
+ConvertBase <|-- NAudioMP3ToWAV
+@enduml

@@ -1,0 +1,13 @@
+@startuml
+abstract class ConvertBase {
+    # Success : string <<get>>
+    + {abstract} Convert(filePath:string) : void
+}
+class "Func`2"<T1,T2> {
+}
+class "Func`3"<T1,T2,T3> {
+}
+IConverter <|-- ConvertBase
+ConvertBase --> "ShowMessage<string,DialogResult>" "Func`2"
+ConvertBase --> "ChangeExtension<string,string,string>" "Func`3"
+@enduml

@@ -1,0 +1,13 @@
+@startuml
+class SoundData {
+    {static} <<readonly>> - _lockObject : object
+    + Fname : string <<get>> <<set>>
+    - SoundData()
+}
+SoundData o-> "_waveOutEvent" WaveOutEvent
+SoundData --> "_waveStream" WaveStream
+SoundData --> "WaveOutEvent" WaveOutEvent
+SoundData --> "WaveStream" WaveStream
+SoundData --> "Instance" SoundData
+SoundData --> "_instance" SoundData
+@enduml

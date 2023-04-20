@@ -1,0 +1,7 @@
+@startuml
+class FormatsData <<struct>> {
+    + <<const>> MP4 : string = "mp4"
+    + <<const>> MP3 : string = "mp3"
+    + <<const>> WAV : string = "wav"
+}
+@enduml
