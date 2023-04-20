@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SoundLoop.Models
 {
-    internal class SoundModel
+    internal class SoundData
     {
         static readonly object _lockObject = new();
         WaveOutEvent _waveOutEvent = new();
@@ -42,11 +42,11 @@ namespace SoundLoop.Models
         }
 
         public string Fname { get; set; }
-		SoundModel()
+		SoundData()
         {
             
         }
-        public static SoundModel Instance
+        public static SoundData Instance
         {
             get
             {
@@ -57,6 +57,6 @@ namespace SoundLoop.Models
                 return _instance;
             }
         }
-        public static SoundModel _instance;
+        public static SoundData _instance;
     }
 }

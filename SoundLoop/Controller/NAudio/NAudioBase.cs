@@ -13,7 +13,7 @@ namespace SoundLoop.Controller.NAudio
 {
     abstract internal class NAudioBase : IUserPlaybackable,ISoundModelProvider
     {
-        public SoundModel SoundModel => SoundModel.Instance;
+        public SoundData SoundModel => SoundData.Instance;
 
         protected bool Stooped => SoundModel.WaveOutEvent.PlaybackState == PlaybackState.Stopped;
         protected bool Paused => SoundModel.WaveOutEvent.PlaybackState == PlaybackState.Paused;
