@@ -1,0 +1,18 @@
+@startuml
+abstract class NAudioBase {
+    # Stooped : bool <<get>>
+    # Paused : bool <<get>>
+    # NullState : bool <<get>>
+    + Pause() : void
+    + AdjustVolume(volume:float) : void
+    + <<virtual>> <<async>> Play() : void
+    # Loop() : void
+    # Reset(waveStream:WaveStream) : void
+    + <<virtual>> Read(fname:string) : void
+    + Resume() : void
+    + Stop(waveStream:WaveStream) : void
+}
+IUserPlaybackable <|-- NAudioBase
+ISoundModelProvider <|-- NAudioBase
+NAudioBase --> "SoundModel" SoundData
+@enduml

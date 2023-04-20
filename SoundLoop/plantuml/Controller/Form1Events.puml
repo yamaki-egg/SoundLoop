@@ -1,0 +1,21 @@
+@startuml
+class Form1Events {
+    + Form1Events(status:ToolStripStatusLabel, trackBar:TrackBar, form:Form)
+    + FormOpen_Click(sender:object, e:EventArgs) : void
+    + Form1Play_Click(sender:object, e:EventArgs) : void
+    + Form1Pause_Click(sender:object, e:EventArgs) : void
+    + Form1Volume_Change(sender:object, e:EventArgs) : void
+    + Form1Stop_Click(sender:object, e:EventArgs) : void
+    + Form1Close_Key(sender:object, e:FormClosingEventArgs) : void
+    + MP4ToMP3Convert_Click(sender:object, e:EventArgs) : void
+    + MP3ToWavConvert_Click(sender:object, e:EventArgs) : void
+}
+ISoundModelProvider <|-- Form1Events
+Form1Events --> "_NAudio" IUserPlaybackable
+Form1Events --> "_Convert" IConverter
+Form1Events o-> "_UFileDialog" UFileDialog
+Form1Events --> "SoundModel" SoundData
+Form1Events --> "Status" ToolStripStatusLabel
+Form1Events --> "VolumeBar" TrackBar
+Form1Events --> "Form" Form
+@enduml

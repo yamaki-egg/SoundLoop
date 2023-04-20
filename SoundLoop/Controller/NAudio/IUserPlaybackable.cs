@@ -2,7 +2,7 @@
 {
     internal interface IUserPlaybackable:IReadable,IPauseable,IStopable
     {
-        public void AdjustVolume(float volume);
-        public void Play();
+        void AdjustVolume(float volume);
+        void Play();
     }
 }

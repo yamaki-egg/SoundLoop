@@ -1,0 +1,5 @@
+@startuml
+interface IConverter {
+    Convert(filePath:string) : void
+}
+@enduml

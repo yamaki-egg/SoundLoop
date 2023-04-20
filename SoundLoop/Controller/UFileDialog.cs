@@ -34,5 +34,13 @@ namespace SoundLoop.Controller
             else
                 return new NAudioSound();
         }
+        public string InvokeFileOpen(string fname)
+        {
+            if(!File.Exists(fname) || string.IsNullOrEmpty(fname))
+            {
+                (fname,_)=FileOpen();
+            }
+            return fname;
+        }
     }
 }

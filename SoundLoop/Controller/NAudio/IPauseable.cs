@@ -2,7 +2,7 @@
 {
     internal interface IPauseable
     {
-        public void Pause();
-        public void Resume();
+        void Pause();
+        void Resume();
     }
 }

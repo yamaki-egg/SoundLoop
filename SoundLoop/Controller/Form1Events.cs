@@ -1,4 +1,5 @@
 ﻿using SoundLoop.Controller.NAudio;
+using SoundLoop.Controller.NRecoNAudioConvert;
 using SoundLoop.Models;
 using System;
 using System.Collections.Generic;
@@ -11,8 +12,9 @@ namespace SoundLoop.Controller
     internal class Form1Events:ISoundModelProvider
     {
         IUserPlaybackable _NAudio;
-        NRecoNAdioConvert _NRecoConvert = new();
-        public SoundModel SoundModel => SoundModel.Instance;
+        IConverter _Convert;
+        UFileDialog _UFileDialog = new();
+        public SoundData SoundModel => SoundData.Instance;
         public ToolStripStatusLabel Status {  get; init; }
         public TrackBar VolumeBar { get; init; }
         public Form Form {  get; init; }
@@ -25,6 +27,8 @@ namespace SoundLoop.Controller
         public void FormOpen_Click(object sender, EventArgs e)
         {
             (SoundModel.Fname,_NAudio) =UFileDialog.FileOpen();
+            if (string.IsNullOrEmpty(SoundModel.Fname))
+                return;
             _NAudio.Read(SoundModel.Fname);
             Status.Text = Path.GetFileName(SoundModel.Fname);
         }
@@ -52,15 +56,15 @@ namespace SoundLoop.Controller
         }
         public void MP4ToMP3Convert_Click(object sender, EventArgs e)
         {
-            if(SoundModel.Fname.Length==0)
-                return;
-            _NRecoConvert.MP4ToMP3(SoundModel.Fname);
+			SoundModel.Fname=_UFileDialog.InvokeFileOpen(SoundModel.Fname);
+			_Convert = new NRecoMP4ToMP3();
+            _Convert.Convert(SoundModel.Fname);
         }
         public void MP3ToWavConvert_Click(object sender, EventArgs e)
         {
-            if (SoundModel.Fname.Length == 0)
-                return;
-            _NRecoConvert.MP3ToWav(SoundModel.Fname);
+			SoundModel.Fname=_UFileDialog.InvokeFileOpen(SoundModel.Fname);
+            _Convert=new NAudioMP3ToWAV();
+            _Convert.Convert(SoundModel.Fname);
         }
     }
 }
