@@ -9,6 +9,6 @@ namespace SoundLoop.Controller.NAudio
 {
     internal interface IReadable
     {
-        public void Read(string fname);
+        void Read(string fname);
     }
 }

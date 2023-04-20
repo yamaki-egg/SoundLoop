@@ -14,14 +14,14 @@ namespace SoundLoop.Controller.NRecoNAudioConvert
         {
             try
             {
-                var outputFile=_ChangeExtension(fileName,FormatsData.MP3);
+                var outputFile=ChangeExtension(fileName,FormatsData.MP3);
                 var convert = new FFMpegConverter();
                 convert.ConvertMedia(fileName, outputFile, FormatsData.MP3);
-                _ShowMessage(Success);
+                ShowMessage(Success);
             }
             catch (Exception ex)
             {
-                _ShowMessage(ex.Message);
+                ShowMessage(ex.Message);
             }
         }
     }

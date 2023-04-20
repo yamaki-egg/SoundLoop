@@ -17,14 +17,14 @@ namespace SoundLoop.Controller.NRecoNAudioConvert
                 using (var mp3Reader = new Mp3FileReader(MP3File))
                 using (var waveStream = WaveFormatConversionStream.CreatePcmStream(mp3Reader))
                 {
-                    var outputWavFilePath = _ChangeExtension(MP3File, FormatsData.WAV);
+                    var outputWavFilePath = ChangeExtension(MP3File, FormatsData.WAV);
                     WaveFileWriter.CreateWaveFile(outputWavFilePath, waveStream);
                 }
-                _ShowMessage(Success);
+                ShowMessage(Success);
             }
             catch (Exception ex)
             {
-                _ShowMessage(ex.Message);
+                ShowMessage(ex.Message);
             }
         }
     }

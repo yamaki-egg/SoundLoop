@@ -8,8 +8,8 @@ namespace SoundLoop.Controller.NRecoNAudioConvert
 {
     abstract internal class ConvertBase : IConverter
     {
-        protected Func<string,DialogResult> _ShowMessage=MessageBox.Show;
-        protected Func<string, string, string> _ChangeExtension = Path.ChangeExtension;
+        protected Func<string,DialogResult> ShowMessage => MessageBox.Show;
+        protected Func<string, string, string> ChangeExtension => Path.ChangeExtension;
         protected string Success => "Success!";
         public abstract void Convert(string filePath);
     }
