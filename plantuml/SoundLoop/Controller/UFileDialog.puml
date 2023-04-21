@@ -1,6 +1,6 @@
 @startuml
 class UFileDialog {
     + {static} FileOpen(fileter:string) : string
-    + {static} InvokeFileOpen(fname:string) : string
+    + InvokeFileOpen(fname:string) : string
 }
 @enduml

@@ -15,14 +15,14 @@ namespace SoundLoop.Controller.NAudio
         {
             if (NullState || Stooped)
             {
-                SoundModel.WaveStream = new AudioFileReader(fname);
-                SoundModel.WaveOutEvent.Init(SoundModel.WaveStream);
+                SoundData.WaveStream = new AudioFileReader(fname);
+                SoundData.WaveOutEvent.Init(SoundData.WaveStream);
                 Play();
             }
         }
         public override void Play()
         {
-            Reset(SoundModel.WaveStream);
+            Reset(SoundData.WaveStream);
             base.Play();
         }
     }

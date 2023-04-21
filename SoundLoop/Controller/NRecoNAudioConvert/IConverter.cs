@@ -8,6 +8,6 @@ namespace SoundLoop.Controller.NRecoNAudioConvert
 {
     internal interface IConverter
     {
-        void Convert(string filePath);
+        void Convert();
     }
 }

@@ -8,6 +8,9 @@ namespace SoundLoop
 		public Form1()
 		{
 			InitializeComponent();
+			Text = "SoundLoop";
+
+			Icon = new Icon(GetIconPath());
 
 			_form1Events = new(fnameStripStatusLabel, volumeTrackBar, this);
 
@@ -18,9 +21,19 @@ namespace SoundLoop
 			volumeTrackBar.ValueChanged += _form1Events.Form1Volume_Change;
 			mp4Tomp3ToolStripMenuItem.Click += _form1Events.MP4ToMP3Convert_Click;
 			mp3ToWavToolStripMenuItem.Click += _form1Events.MP3ToWavConvert_Click;
-			//this.KeyDown += Form1Events.Form1Close_Key;
 		}
-
+		string GetIconPath()
+		{
+			var iconPath=Directory.GetCurrentDirectory();
+			if (string.IsNullOrEmpty(iconPath))
+				return null;
+			for (int i = 0; i < 4; i++)
+			{
+				var t=iconPath.LastIndexOf(@"\");
+				iconPath=iconPath.Substring(0, t);
+			}
+			return Path.Combine(iconPath, "Icon", "audio.ico");
+		}
 
 	}
 }

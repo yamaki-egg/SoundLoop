@@ -9,21 +9,23 @@ class Form1Events {
     + Form1Pause_Click(sender:object, e:EventArgs) : void
     + Form1Volume_Change(sender:object, e:EventArgs) : void
     + Form1Stop_Click(sender:object, e:EventArgs) : void
+    + Form1Close_Key(sender:object, e:FormClosingEventArgs) : void
     + MP4ToMP3Convert_Click(sender:object, e:EventArgs) : void
     + MP3ToWavConvert_Click(sender:object, e:EventArgs) : void
 }
 ISoundModelProvider <|-- Form1Events
 Form1Events --> "_NAudio" IUserPlaybackable
-Form1Events --> "SoundData" SoundData
+Form1Events o-> "_UFileDialog" UFileDialog
+Form1Events --> "SoundModel" SoundData
 Form1Events --> "Status" ToolStripStatusLabel
 Form1Events --> "VolumeBar" TrackBar
 Form1Events --> "Form" Form
 interface ISoundModelProvider {
 }
-ISoundModelProvider --> "SoundData" SoundData
+ISoundModelProvider --> "SoundModel" SoundData
 class UFileDialog {
     + {static} FileOpen(fileter:string) : string
-    + {static} InvokeFileOpen(fname:string) : string
+    + InvokeFileOpen(fname:string) : string
 }
 class FormatsData <<struct>> {
     + <<const>> MP4 : string = "mp4"
@@ -43,7 +45,6 @@ SoundData --> "Instance" SoundData
 SoundData --> "_instance" SoundData
 class Form1 <<partial>> {
     + Form1()
-    - GetIconPath() : string
 }
 Form <|-- Form1
 Form1 --> "_form1Events" Form1Events
@@ -113,7 +114,7 @@ abstract class NAudioBase {
 }
 IUserPlaybackable <|-- NAudioBase
 ISoundModelProvider <|-- NAudioBase
-NAudioBase --> "SoundData" SoundData
+NAudioBase --> "SoundModel" SoundData
 class NAudioMedia {
     + <<override>> Read(fname:string) : void
     + <<override>> Play() : void

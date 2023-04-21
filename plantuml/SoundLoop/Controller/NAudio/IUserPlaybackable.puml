@@ -1,0 +1,9 @@
+@startuml
+interface IUserPlaybackable {
+    AdjustVolume(volume:float) : void
+    Play() : void
+}
+IReadable <|-- IUserPlaybackable
+IPauseable <|-- IUserPlaybackable
+IStopable <|-- IUserPlaybackable
+@enduml

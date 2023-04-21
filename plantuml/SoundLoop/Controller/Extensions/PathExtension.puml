@@ -1,0 +1,5 @@
+@startuml
+class PathExtension <<static>> {
+    + {static} GetExtensionWithoutPeriod(path:string) : string
+}
+@enduml

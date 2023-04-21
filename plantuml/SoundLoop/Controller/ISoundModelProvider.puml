@@ -1,5 +1,5 @@
 @startuml
 interface ISoundModelProvider {
 }
-ISoundModelProvider --> "SoundData" SoundData
+ISoundModelProvider --> "SoundModel" SoundData
 @enduml

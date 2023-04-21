@@ -14,5 +14,5 @@ abstract class NAudioBase {
 }
 IUserPlaybackable <|-- NAudioBase
 ISoundModelProvider <|-- NAudioBase
-NAudioBase --> "SoundData" SoundData
+NAudioBase --> "SoundModel" SoundData
 @enduml
