@@ -11,6 +11,12 @@ namespace SoundLoop.Controller.NRecoNAudioConvert
         protected Func<string,DialogResult> ShowMessage => MessageBox.Show;
         protected Func<string, string, string> ChangeExtension => Path.ChangeExtension;
         protected string Success => "Success!";
-        public abstract void Convert(string filePath);
+        protected bool FileCheck(string filePath) => File.Exists(filePath) || string.IsNullOrEmpty(filePath);
+        public string FilePath { get; init; }
+        public virtual void Convert()
+        {
+            if (FileCheck(FilePath))
+                return;
+        }
     }
 }

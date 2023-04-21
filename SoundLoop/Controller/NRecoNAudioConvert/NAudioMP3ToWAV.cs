@@ -10,14 +10,15 @@ namespace SoundLoop.Controller.NRecoNAudioConvert
 {
     internal class NAudioMP3ToWAV:ConvertBase
     {
-        public override void Convert(string MP3File)
+        public override void Convert()
         {
+            base.Convert();
             try
             {
-                using (var mp3Reader = new Mp3FileReader(MP3File))
+                using (var mp3Reader = new Mp3FileReader(FilePath))
                 using (var waveStream = WaveFormatConversionStream.CreatePcmStream(mp3Reader))
                 {
-                    var outputWavFilePath = ChangeExtension(MP3File, FormatsData.WAV);
+                    var outputWavFilePath = ChangeExtension(FilePath, FormatsData.WAV);
                     WaveFileWriter.CreateWaveFile(outputWavFilePath, waveStream);
                 }
                 ShowMessage(Success);
@@ -26,6 +27,10 @@ namespace SoundLoop.Controller.NRecoNAudioConvert
             {
                 ShowMessage(ex.Message);
             }
+        }
+        public NAudioMP3ToWAV(string filePath)
+        {
+            FilePath= filePath;
         }
     }
 }

@@ -10,19 +10,24 @@ namespace SoundLoop.Controller.NRecoNAudioConvert
 {
     internal class NRecoMP4ToMP3:ConvertBase
     {
-        public override void Convert(string fileName)
+        public override void Convert()
         {
+            base.Convert();
             try
             {
-                var outputFile=ChangeExtension(fileName,FormatsData.MP3);
+                var outputFile=ChangeExtension(FilePath,FormatsData.MP3);
                 var convert = new FFMpegConverter();
-                convert.ConvertMedia(fileName, outputFile, FormatsData.MP3);
+                convert.ConvertMedia(FilePath, outputFile, FormatsData.MP3);
                 ShowMessage(Success);
             }
             catch (Exception ex)
             {
                 ShowMessage(ex.Message);
             }
+        }
+        public NRecoMP4ToMP3(string filePath)
+        {
+            FilePath = filePath;
         }
     }
 }
