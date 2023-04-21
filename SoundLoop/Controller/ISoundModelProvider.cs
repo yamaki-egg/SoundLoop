@@ -9,6 +9,6 @@ namespace SoundLoop
 {
     internal interface ISoundModelProvider
     {
-        SoundData SoundModel { get; }
+        SoundData SoundData { get; }
     }
 }

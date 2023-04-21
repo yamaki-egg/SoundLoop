@@ -13,8 +13,7 @@ namespace SoundLoop.Controller
     internal class Form1Events:ISoundModelProvider
     {
         IUserPlaybackable _NAudio;
-        UFileDialog _UFileDialog = new();
-        public SoundData SoundModel => SoundData.Instance;
+        public SoundData SoundData => SoundData.Instance;
         public ToolStripStatusLabel Status {  get; init; }
         public TrackBar VolumeBar { get; init; }
         public Form Form {  get; init; }
@@ -26,16 +25,16 @@ namespace SoundLoop.Controller
         }
         public void FormOpen_Click(object sender, EventArgs e)
         {
-            SoundModel.Fname =UFileDialog.FileOpen();
-            if (string.IsNullOrEmpty(SoundModel.Fname))
+            SoundData.Fname =UFileDialog.FileOpen();
+            if (string.IsNullOrEmpty(SoundData.Fname))
                 return;
-            _NAudio=FactoryNAudio.Create(SoundModel.Fname);
-            _NAudio.Read(SoundModel.Fname);
-            Status.Text = Path.GetFileName(SoundModel.Fname);
+            _NAudio=FactoryNAudio.Create(SoundData.Fname);
+            _NAudio.Read(SoundData.Fname);
+            Status.Text = Path.GetFileName(SoundData.Fname);
         }
         public void Form1Play_Click(object sender, EventArgs e)
         {
-            SoundModel.WaveOutEvent.Play();   
+            SoundData.WaveOutEvent.Play();   
         }
         public void Form1Pause_Click(object sender, EventArgs e)
         {
@@ -43,28 +42,25 @@ namespace SoundLoop.Controller
         }
         public void Form1Volume_Change(object sender, EventArgs e)
         {
-            if (SoundModel.WaveOutEvent is null)
+            if (SoundData.WaveOutEvent is null)
                 return;
             var adjustVolumeNum = 100f;
 			_NAudio.AdjustVolume(VolumeBar.Value / adjustVolumeNum);
 		}
         public void Form1Stop_Click(object sender, EventArgs e)
         {
-            _NAudio.Stop(SoundModel.WaveStream);
-        }
-        public void Form1Close_Key(object sender, FormClosingEventArgs e)
-        {
+            _NAudio.Stop(SoundData.WaveStream);
         }
         public void MP4ToMP3Convert_Click(object sender, EventArgs e)
         {
-			SoundModel.Fname=_UFileDialog.InvokeFileOpen(SoundModel.Fname);
-            IConverter converter = FactoryConvert.Create(SoundModel.Fname);
+			SoundData.Fname=UFileDialog.InvokeFileOpen(SoundData.Fname);
+            IConverter converter = FactoryConvert.Create(SoundData.Fname);
             converter.Convert();
         }
         public void MP3ToWavConvert_Click(object sender, EventArgs e)
         {
-			SoundModel.Fname=_UFileDialog.InvokeFileOpen(SoundModel.Fname);
-            IConverter converter = FactoryConvert.Create(SoundModel.Fname);
+			SoundData.Fname=UFileDialog.InvokeFileOpen(SoundData.Fname);
+            IConverter converter = FactoryConvert.Create(SoundData.Fname);
             converter.Convert();
         }
     }

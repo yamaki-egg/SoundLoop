@@ -1,0 +1,7 @@
+@startuml
+class NRecoMP4ToMP3 {
+    + <<override>> Convert() : void
+    + NRecoMP4ToMP3(filePath:string)
+}
+ConvertBase <|-- NRecoMP4ToMP3
+@enduml

@@ -1,0 +1,5 @@
+@startuml
+interface "IFactory`1"<T> {
+    {abstract} {static} Create(filePath:string) : T
+}
+@enduml

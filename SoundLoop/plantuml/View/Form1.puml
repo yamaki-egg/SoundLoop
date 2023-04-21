@@ -1,0 +1,8 @@
+@startuml
+class Form1 <<partial>> {
+    + Form1()
+    - GetIconPath() : string
+}
+Form <|-- Form1
+Form1 --> "_form1Events" Form1Events
+@enduml

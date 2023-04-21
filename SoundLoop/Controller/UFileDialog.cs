@@ -27,7 +27,7 @@ namespace SoundLoop.Controller
             return fname;
         }
         [Pure]
-        public string InvokeFileOpen(string fname)
+        public static string InvokeFileOpen(string fname)
         {
             if(!File.Exists(fname) || string.IsNullOrEmpty(fname))
             {

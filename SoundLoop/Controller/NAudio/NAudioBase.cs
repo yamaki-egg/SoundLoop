@@ -13,27 +13,27 @@ namespace SoundLoop.Controller.NAudio
 {
     abstract internal class NAudioBase : IUserPlaybackable,ISoundModelProvider
     {
-        public SoundData SoundModel => SoundData.Instance;
+        public SoundData SoundData => SoundData.Instance;
 
-        protected bool Stooped => SoundModel.WaveOutEvent.PlaybackState == PlaybackState.Stopped;
-        protected bool Paused => SoundModel.WaveOutEvent.PlaybackState == PlaybackState.Paused;
-        protected bool NullState => SoundModel.WaveOutEvent?.PlaybackState == null;
+        protected bool Stooped => SoundData.WaveOutEvent.PlaybackState == PlaybackState.Stopped;
+        protected bool Paused => SoundData.WaveOutEvent.PlaybackState == PlaybackState.Paused;
+        protected bool NullState => SoundData.WaveOutEvent?.PlaybackState == null;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void Pause()
         {
-            SoundModel.WaveOutEvent.Pause();
+            SoundData.WaveOutEvent.Pause();
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void AdjustVolume(float volume)
         {
-            SoundModel.WaveOutEvent.Volume = volume;
+            SoundData.WaveOutEvent.Volume = volume;
         }
         //LoopとPlayは再帰
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public virtual async void Play()
         {
-            SoundModel.WaveOutEvent.Play();
+            SoundData.WaveOutEvent.Play();
 
             await Task.Run(Loop);
         }
@@ -71,7 +71,7 @@ namespace SoundLoop.Controller.NAudio
 			if(waveStream == null)
                 return;
             Pause();
-            SoundModel.WaveOutEvent.Stop();
+            SoundData.WaveOutEvent.Stop();
 			waveStream.Dispose();
 		}
 	}

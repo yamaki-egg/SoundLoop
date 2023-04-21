@@ -1,0 +1,5 @@
+@startuml
+interface IStopable {
+    Stop(waveStream:WaveStream) : void
+}
+@enduml

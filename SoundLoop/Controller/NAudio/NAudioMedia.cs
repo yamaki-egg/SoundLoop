@@ -15,16 +15,16 @@ namespace SoundLoop.Controller.NAudio
         {
             if (NullState || Stooped)
             {
-                using (SoundModel.WaveStream = new MediaFoundationReader(fname))
+                using (SoundData.WaveStream = new MediaFoundationReader(fname))
                 {
-                    SoundModel.WaveOutEvent.Init(SoundModel.WaveStream);
+                    SoundData.WaveOutEvent.Init(SoundData.WaveStream);
                     Play();
                 }
             }
         }
         public override void Play()
         {
-            Reset(SoundModel.WaveStream);
+            Reset(SoundData.WaveStream);
             base.Play();
         }
     }

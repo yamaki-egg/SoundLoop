@@ -1,0 +1,5 @@
+@startuml
+interface IReadable {
+    Read(fname:string) : void
+}
+@enduml
