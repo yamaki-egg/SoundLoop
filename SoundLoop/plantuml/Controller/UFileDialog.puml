@@ -1,7 +1,0 @@
-@startuml
-class UFileDialog {
-    + {static} FileOpen(fileter:string) : (string,IUserPlaybackable)
-    {static} - ExtCheck(fname:string) : IUserPlaybackable
-    + InvokeFileOpen(fname:string) : string
-}
-@enduml

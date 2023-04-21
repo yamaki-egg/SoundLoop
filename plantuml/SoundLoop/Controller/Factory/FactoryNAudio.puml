@@ -1,0 +1,8 @@
+@startuml
+class FactoryNAudio {
+    + {static} Create(fname:string) : IUserPlaybackable
+}
+class "IFactory`1"<T> {
+}
+"IFactory`1" "<IUserPlaybackable>" <|-- FactoryNAudio
+@enduml

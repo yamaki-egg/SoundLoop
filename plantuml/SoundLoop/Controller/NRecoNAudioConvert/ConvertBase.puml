@@ -1,7 +1,9 @@
 @startuml
 abstract class ConvertBase {
     # Success : string <<get>>
-    + {abstract} Convert(filePath:string) : void
+    # FileCheck(filePath:string) : bool
+    + FilePath : string <<get>> <<init>>
+    + <<virtual>> Convert() : void
 }
 class "Func`2"<T1,T2> {
 }

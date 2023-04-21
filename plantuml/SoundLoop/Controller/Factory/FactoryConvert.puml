@@ -1,0 +1,8 @@
+@startuml
+class FactoryConvert {
+    + {static} Create(filePath:string) : IConverter
+}
+class "IFactory`1"<T> {
+}
+"IFactory`1" "<IConverter>" <|-- FactoryConvert
+@enduml

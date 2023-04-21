@@ -15,7 +15,6 @@ class Form1Events {
 }
 ISoundModelProvider <|-- Form1Events
 Form1Events --> "_NAudio" IUserPlaybackable
-Form1Events --> "_Convert" IConverter
 Form1Events o-> "_UFileDialog" UFileDialog
 Form1Events --> "SoundModel" SoundData
 Form1Events --> "Status" ToolStripStatusLabel
@@ -25,8 +24,7 @@ interface ISoundModelProvider {
 }
 ISoundModelProvider --> "SoundModel" SoundData
 class UFileDialog {
-    + {static} FileOpen(fileter:string) : (string,IUserPlaybackable)
-    {static} - ExtCheck(fname:string) : IUserPlaybackable
+    + {static} FileOpen(fileter:string) : string
     + InvokeFileOpen(fname:string) : string
 }
 class FormatsData <<struct>> {
@@ -68,6 +66,21 @@ Form1 --> "mp3ToWavToolStripMenuItem" ToolStripMenuItem
 Form1 --> "pauseToolStripMenuItem1" ToolStripMenuItem
 class PathExtension <<static>> {
     + {static} GetExtensionWithoutPeriod(path:string) : string
+}
+class FactoryConvert {
+    + {static} Create(filePath:string) : IConverter
+}
+class "IFactory`1"<T> {
+}
+"IFactory`1" "<IConverter>" <|-- FactoryConvert
+class FactoryNAudio {
+    + {static} Create(fname:string) : IUserPlaybackable
+}
+class "IFactory`1"<T> {
+}
+"IFactory`1" "<IUserPlaybackable>" <|-- FactoryNAudio
+interface "IFactory`1"<T> {
+    {abstract} {static} Create(filePath:string) : T
 }
 interface IPauseable {
     Pause() : void
@@ -114,7 +127,9 @@ class NAudioSound {
 NAudioBase <|-- NAudioSound
 abstract class ConvertBase {
     # Success : string <<get>>
-    + {abstract} Convert(filePath:string) : void
+    # FileCheck(filePath:string) : bool
+    + FilePath : string <<get>> <<init>>
+    + <<virtual>> Convert() : void
 }
 class "Func`2"<T1,T2> {
 }
@@ -124,14 +139,16 @@ IConverter <|-- ConvertBase
 ConvertBase --> "ShowMessage<string,DialogResult>" "Func`2"
 ConvertBase --> "ChangeExtension<string,string,string>" "Func`3"
 interface IConverter {
-    Convert(filePath:string) : void
+    Convert() : void
 }
 class NAudioMP3ToWAV {
-    + <<override>> Convert(MP3File:string) : void
+    + <<override>> Convert() : void
+    + NAudioMP3ToWAV(filePath:string)
 }
 ConvertBase <|-- NAudioMP3ToWAV
 class NRecoMP4ToMP3 {
-    + <<override>> Convert(fileName:string) : void
+    + <<override>> Convert() : void
+    + NRecoMP4ToMP3(filePath:string)
 }
 ConvertBase <|-- NRecoMP4ToMP3
 @enduml

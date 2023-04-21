@@ -12,7 +12,6 @@ class Form1Events {
 }
 ISoundModelProvider <|-- Form1Events
 Form1Events --> "_NAudio" IUserPlaybackable
-Form1Events --> "_Convert" IConverter
 Form1Events o-> "_UFileDialog" UFileDialog
 Form1Events --> "SoundModel" SoundData
 Form1Events --> "Status" ToolStripStatusLabel
