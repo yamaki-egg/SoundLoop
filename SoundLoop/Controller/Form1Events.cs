@@ -23,13 +23,13 @@ namespace SoundLoop.Controller
             VolumeBar = trackBar;
             Form = form;
         }
-        public void FormOpen_Click(object sender, EventArgs e)
+        public async void FormOpen_Click(object sender, EventArgs e)
         {
             SoundData.Fname =UFileDialog.FileOpen();
             if (string.IsNullOrEmpty(SoundData.Fname))
                 return;
             _NAudio=FactoryNAudio.Create(SoundData.Fname);
-            _NAudio.Read(SoundData.Fname);
+            await _NAudio.Read(SoundData.Fname);
             Status.Text = Path.GetFileName(SoundData.Fname);
         }
         public void Form1Play_Click(object sender, EventArgs e)

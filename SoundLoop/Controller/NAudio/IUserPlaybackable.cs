@@ -3,6 +3,6 @@
     internal interface IUserPlaybackable:IReadable,IPauseable,IStopable
     {
         void AdjustVolume(float volume);
-        void Play();
+        Task Play();
     }
 }

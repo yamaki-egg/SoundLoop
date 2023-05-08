@@ -31,14 +31,14 @@ namespace SoundLoop.Controller.NAudio
         }
         //LoopとPlayは再帰
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public virtual async void Play()
+        public virtual async Task Play()
         {
             SoundData.WaveOutEvent.Play();
 
             await Task.Run(Loop);
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected void Loop()
+        protected async void Loop()
         {
             while (true)
             {
@@ -47,7 +47,7 @@ namespace SoundLoop.Controller.NAudio
                 if (Paused)
                     return;
             }
-            Play();
+            await Play();
         }
         protected void Reset(WaveStream waveStream)
         {
@@ -56,13 +56,13 @@ namespace SoundLoop.Controller.NAudio
                 waveStream.Position = 0;
             }
         }
-        public virtual void Read(string fname) { }
+        public abstract Task Read(string fname);
 
-        public void Resume()
+        public async Task Resume()
         {
             if (Paused)
             {
-                Play();
+                await Play();
             }
         }
 
