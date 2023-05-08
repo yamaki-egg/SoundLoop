@@ -35,5 +35,18 @@ namespace SoundLoop.Controller
             }
             return fname;
         }
+        [Pure]
+        public static string GetIconPath()
+        {
+            var iconPath = Directory.GetCurrentDirectory();
+            if (string.IsNullOrEmpty(iconPath))
+                return null;
+            for (int i = 0; i < 4; i++)
+            {
+                var t = iconPath.LastIndexOf(@"\");
+                iconPath = iconPath.Substring(0, t);
+            }
+            return Path.Combine(iconPath, "Icon", "audio.ico");
+        }
     }
 }
