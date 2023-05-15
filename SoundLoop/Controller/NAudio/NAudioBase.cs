@@ -38,7 +38,7 @@ namespace SoundLoop.Controller.NAudio
             await Task.Run(Loop);
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected async void Loop()
+        protected async Task Loop()
         {
             while (true)
             {
