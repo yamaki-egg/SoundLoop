@@ -13,6 +13,7 @@ namespace SoundLoop.Controller.NAudio
     {
         public override async Task Read(string fname)
         {
+            await base.Read(fname);
             if (NullState || Stooped)
             {
                 SoundData.WaveStream = new AudioFileReader(fname);

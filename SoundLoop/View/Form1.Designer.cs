@@ -70,20 +70,20 @@
 			// playToolStripMenuItem
 			// 
 			playToolStripMenuItem.Name = "playToolStripMenuItem";
-			playToolStripMenuItem.Size = new Size(31, 20);
-			playToolStripMenuItem.Text = "▷";
+			playToolStripMenuItem.Size = new Size(43, 20);
+			playToolStripMenuItem.Text = "再生";
 			// 
 			// pauseToolStripMenuItem1
 			// 
 			pauseToolStripMenuItem1.Name = "pauseToolStripMenuItem1";
-			pauseToolStripMenuItem1.Size = new Size(25, 20);
-			pauseToolStripMenuItem1.Text = "||";
+			pauseToolStripMenuItem1.Size = new Size(67, 20);
+			pauseToolStripMenuItem1.Text = "一時停止";
 			// 
 			// stopToolStripMenuItem
 			// 
 			stopToolStripMenuItem.Name = "stopToolStripMenuItem";
-			stopToolStripMenuItem.Size = new Size(29, 20);
-			stopToolStripMenuItem.Text = "☐";
+			stopToolStripMenuItem.Size = new Size(43, 20);
+			stopToolStripMenuItem.Text = "停止";
 			// 
 			// 変換ToolStripMenuItem
 			// 
