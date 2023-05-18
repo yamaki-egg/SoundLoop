@@ -12,7 +12,7 @@ namespace SoundLoop
 
 			Icon = new Icon(UFileDialog.GetIconPath());
 
-			_form1Events = new(fnameStripStatusLabel, volumeTrackBar, this);
+			_form1Events = new(fnameStripStatusLabel, volumeTrackBar,timeTrackBar, this);
 
 			openToolStripMenuItem.Click += _form1Events.FormOpen_Click;
 			playToolStripMenuItem.Click += _form1Events.Form1Play_Click;
