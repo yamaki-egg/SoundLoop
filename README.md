@@ -14,7 +14,7 @@
 <img src="https://github.com/yamaki-egg/SoundLoop/assets/120764488/848183a5-cc32-4667-85d8-96b45bca8591" height="50%">
 
 3. 変換機能
-   1. それぞれに変換したいものを合わせたクリックします。
+   1. それぞれに変換したいものを選びクリックします。
    
 <img src="https://github.com/yamaki-egg/SoundLoop/assets/120764488/eef5e478-7646-417c-9d4a-ca244de498e8" height="50%">
 
